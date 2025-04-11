@@ -38,25 +38,20 @@ export function NavigationEvents() {
   // Gérer la navigation
   useEffect(() => {
     let timer;
-    
-    // Fonction pour compléter la barre et la réinitialiser après
+
     const resetProgress = () => {
       NProgress.done();
-      // Réinitialisation complète après animation terminée
       setTimeout(() => {
         NProgress.remove();
       }, 500);
     };
 
-    // Démarrer la barre de progression
     NProgress.start();
 
-    // Terminer la barre de progression après un petit délai
     timer = setTimeout(() => {
       resetProgress();
     }, 300);
 
-    // Nettoyer lorsque le composant est démonté ou la route change
     return () => {
       clearTimeout(timer);
       resetProgress();
@@ -64,4 +59,4 @@ export function NavigationEvents() {
   }, [pathname, searchParams]);
 
   return null;
-} 
+}

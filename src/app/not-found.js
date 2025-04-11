@@ -2,8 +2,9 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useTheme } from 'next-themes';
+import { NavigationEvents } from './navigation-events';
 
 export default function NotFound() {
   const [mounted, setMounted] = useState(false);
@@ -143,6 +144,10 @@ export default function NotFound() {
           </motion.div>
         </motion.div>
       </div>
+
+      <Suspense fallback={null}>
+      <NavigationEvents />
+      </Suspense>
     </section>
   );
 }
